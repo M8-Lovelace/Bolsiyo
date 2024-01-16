@@ -1,0 +1,5 @@
+<div class="movies">
+  @for (item of response.hits; track $index) {
+  <img [src]="item.largeImageURL" [alt]="item.userImageURL" />
+  }
+</div>
