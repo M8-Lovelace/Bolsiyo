@@ -1,5 +1,26 @@
+<input (input)="saveInput($event)" type="text" />
+
+<br /><br /><br /><br /><br />
+
+<select [formControl]="categoryForm" name="category" id="category">
+  <option value="science">science</option>
+  <option value="education">education</option>
+  <option value="people">people</option>
+  <option value="feelings">feelings</option>
+  <option value="computer">computer</option>
+  <option value="buildings">buildings</option>
+</select>
+
+<br /><br /><br /><br /><br />
+
+@if (response) {
 <div class="movies">
   @for (item of response.hits; track $index) {
-  <img [src]="item.largeImageURL" [alt]="item.userImageURL" />
+  <img
+    [routerLink]="['/image', item.id]"
+    [src]="item.largeImageURL"
+    [alt]="item.userImageURL"
+  />
   }
 </div>
+}
