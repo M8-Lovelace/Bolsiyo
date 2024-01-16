@@ -1,7 +1,5 @@
 .movies {
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
 
   img {
     object-fit: cover;
@@ -10,7 +8,6 @@
   }
 }
 
-button {
-  background-color: red;
-  margin-bottom: 20px;
+.rounded-xl {
+  cursor: pointer;
 }

@@ -1,6 +1,7 @@
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, DestroyRef, Input, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
 import { Pixabay, PixabayHit } from '@models/pixabay.model';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
@@ -8,7 +9,7 @@ import { map } from 'rxjs';
 @Component({
   selector: 'app-images',
   standalone: true,
-  imports: [AsyncPipe, JsonPipe],
+  imports: [AsyncPipe, JsonPipe, RouterLink],
   templateUrl: './images.component.html',
   styleUrl: './images.component.scss',
 })

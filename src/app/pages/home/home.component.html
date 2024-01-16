@@ -1,26 +1,43 @@
-<input (input)="saveInput($event)" type="text" />
+<div>
+  <div class="flex flex-wrap border-gray-200 w-100 h-22 my-2 border-b-4 pb-3">
+    <h1 class="w-full md:w-2/6 text-4xl font-bold text-gray-800 p-6 rounded-sm">
+      Pixabay
+    </h1>
+    <div class="w-full md:w-3/6 relative mx-3">
+      <input
+        class="w-full h-12 border-solid border-2 border-gray-200 bg-gray-100 py-6 px-6 mt-0 md:mt-5 mb-3 md:mb-0 appearance-none focus:ring-2 focus:ring-gray-100 focus:outline-none rounded-xl"
+        (input)="saveInput($event)"
+        type="text"
+        placeholder="Search in Pixabay"
+      />
 
-<br /><br /><br /><br /><br />
+      <select
+        class="bg-gray-100 border-solid text-gray-400 position-absolute absolute top-4 right-12 md:top-8 mt-0.5 focus:ring-2 focus:ring-gray-100 focus:outline-none"
+        [formControl]="categoryForm"
+        name="category"
+        id="category"
+      >
+        <option value="all">All categories</option>
+        <option value="science">Science</option>
+        <option value="education">Education</option>
+        <option value="people">People</option>
+        <option value="feelings">Feelings</option>
+        <option value="computer">Computer</option>
+        <option value="buildings">Buildings</option>
+      </select>
+    </div>
+  </div>
 
-<select [formControl]="categoryForm" name="category" id="category">
-  <option value="science">science</option>
-  <option value="education">education</option>
-  <option value="people">people</option>
-  <option value="feelings">feelings</option>
-  <option value="computer">computer</option>
-  <option value="buildings">buildings</option>
-</select>
-
-<br /><br /><br /><br /><br />
-
-@if (response) {
-<div class="movies">
-  @for (item of response.hits; track $index) {
-  <img
-    [routerLink]="['/image', item.id]"
-    [src]="item.largeImageURL"
-    [alt]="item.userImageURL"
-  />
+  @if (response) {
+  <div class="movies grid gap-4 p-6">
+    @for (item of response.hits; track $index) {
+    <img
+      class="p-2 rounded-xl shadow-4xl"
+      [routerLink]="['/image', item.id]"
+      [src]="item.largeImageURL"
+      [alt]="item.userImageURL"
+    />
+    }
+  </div>
   }
 </div>
-}

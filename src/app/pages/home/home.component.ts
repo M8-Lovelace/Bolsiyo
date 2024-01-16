@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   private input!: string;
   private category!: PixabayCategory;
   public response = {} as Pixabay;
-  public categoryForm = new FormControl('', [Validators.required]);
+  public categoryForm = new FormControl('all', [Validators.required]);
 
   ngOnInit(): void {
     this.subscribeToInput();
@@ -60,9 +60,13 @@ export class HomeComponent implements OnInit {
       .subscribe((category) => {
         console.log(category);
         if (category) {
-          this.category =
-            PixabayCategory[category as keyof typeof PixabayCategory];
-          this.getImages(this.input, this.category);
+          if (category === 'all') {
+            this.getImages(this.input);
+          } else {
+            this.category =
+              PixabayCategory[category as keyof typeof PixabayCategory];
+            this.getImages(this.input, this.category);
+          }
         }
       });
   }
