@@ -7,11 +7,6 @@ export const pages: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'image',
-    loadComponent: () =>
-      import('./image/image.component').then((m) => m.ImageComponent),
-  },
-  {
     path: '**',
     redirectTo: '',
   },
